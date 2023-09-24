@@ -2,10 +2,11 @@ result = 0
 operand = None
 operator = None
 wait_for_number = True
-while True and operator != "=":
-# введення цифр
-    while wait_for_number == False and operator != "=":
-        operator = input("Введіть оператор '*' чи '/' чи '+' чи '-' чи '='")
+while True:
+    
+    # введення математичних операторів
+    while wait_for_number == False:
+        operator = input("Введіть математичний оператор '*' чи '/' чи '+' чи '-' чи '=': ")
         if operator == "+" or operator == "-" or operator == "*" or operator == "/" or operator == "=":
             operator = operator
         else:
@@ -14,27 +15,26 @@ while True and operator != "=":
         wait_for_number = True
         print(operator)
         break
+
+    # введення чисел
     while wait_for_number == True and operator != "=":
         operand = input("Введіть довільне число: ")
         try:
             operand == float(operand)
         except ValueError:
-            print(f"'{operand}' is not a number. Try again")
+            print(f"'{operand}' is not a number. Tr1+y again")
             continue
         wait_for_number = False
-        print(operand)
-        print(operator)
         break
     
+    # розрахунок 
     if operator == None:
         result = float(operand)
-        print(f"результат дорівнює {result}")
+        print(result)
     elif operator == "+":
         result += float(operand)
-        print(f"результат дорівнює {result}")
     elif operator == "-":
         result -= float(operand)
-        print(f"результат дорівнює {result}")
     elif operator == "/":
         try:
             result /= float(operand)
@@ -44,11 +44,9 @@ while True and operator != "=":
             operator = None
             operand = None
             wait_for_number = True
-        print(f"результат дорівнює {result}")
     elif operator == "*":
         result *= float(operand)
-        print(f"результат дорівнює {result}")
-    while operator == "=":
+    elif operator == "=":
         result = result
-        print(f"фінальний результат дорівнює {result}")
+        print(f"Результат дорівнює {result}")
         break
