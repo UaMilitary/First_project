@@ -14,6 +14,6 @@ def split_list(grade):
     tuple3 = (a, b)
     return tuple3
 
-d = [1, 2]
+d = [1, 2, 4, 4, 5 , 6, 6]
 print(split_list(d))
 
