@@ -1,0 +1,47 @@
+"""
+За допомогою функції zip, за аналогією прикладу теорії, створіть словник TRANS для транслітерації.
+ Створюйте словник TRANS поза функцією translate
+
+Напишіть функцію translate, яка проводить транслітерацію кириличного алфавіту на латинську.
+
+Функція translate:
+
+приймає на вхід рядок та повертає рядок;
+проводить транслітерацію кириличних символів на латиницю;
+Приклад виконання:
+
+print(translate("Дмитро Короб"))  # Dmitro Korob
+print(translate("Олекса Івасюк"))  # Oleksa Ivasyuk
+
+Примітка: У задачі, при створенні словника TRANS, код TRANS[ord(c.upper())] = l.title() буде вважатися неправильним,
+а TRANS[ord(c.upper())] = l.upper() — правильним. Це компроміс, тому що в першому випадку ми враховуємо великі літери,
+а в другому — правильно, якщо ім'я буде все великими літерами. Щоб не ускладнювати завдання, прийнято як у 
+документах — все ім'я друкується великими.
+"""
+
+CYRILLIC_SYMBOLS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ"
+TRANSLATION = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
+               "f", "h", "ts", "ch", "sh", "sch", "", "y", "", "e", "yu", "ya", "je", "i", "ji", "g")
+
+TRANS = {}
+
+letter_lat = []
+for letter in TRANSLATION:
+    letter_lat.append(letter.lower())
+    letter_lat.append(letter.upper())
+
+letter_cyr = []
+for letter in CYRILLIC_SYMBOLS:
+    letter_cyr.append(ord(letter))
+    letter_cyr.append(ord(letter.upper()))
+
+TRANS.update(zip(letter_cyr, letter_lat))
+
+
+def translate(name):
+    text_convert = name.translate(TRANS)
+    return text_convert
+
+
+txt = "Привіт як у Вас справи?"
+print(translate(txt))

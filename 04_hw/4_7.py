@@ -25,5 +25,5 @@ def calculate_distance(coordinates):
         i += 1
     return dist
 
-a = [1, 3, 1, 3,0,1]
+a = [1, 3, 1, 3, 0, 1]
 print(calculate_distance(a))
